@@ -16,7 +16,7 @@ public class RpmProgramCreationTest extends TestBase {
 
 	@BeforeClass
 	public void setUp() {
-		appLibrary = new AppLibrary("RpmAssessmentCreationTest");
+		appLibrary = new AppLibrary("RpmProgramCreationTest");
 	}
 
 	@Test
@@ -25,17 +25,9 @@ public class RpmProgramCreationTest extends TestBase {
 
 		appLibrary.getDriverInstance();
 		appLibrary.launchApp();// launching the application in browser
-		ProviderPortalLoginPage pplp = new ProviderPortalLoginPage(appLibrary);
-		pplp.fillLoginDetails("dseals+admin@docsink.com", "Beer2nite!").clickCube().clickpatientMessangerApp().clickRPM().clickCreateRPM().createRpmProgram(rpmName).verifyRpmProgram(rpmName);
-		//appLibrary.sleep(5000);
-		//ProviderPortalTeamBuilderPage pptp = new ProviderPortalTeamBuilderPage(appLibrary);
-		//pptp.clickCube();
-//		pptp.clickpatientMessangerApp();
-//		RpmProgramCreationPage rpcp = new RpmProgramCreationPage(appLibrary);
-//		rpcp.clickRPM();
-//		rpcp.clickCreateRPM();
-//		rpcp.createRpmProgram(rpmName).verifyRpmProgram(rpmName);
-		
+		new ProviderPortalLoginPage(appLibrary).fillLoginDetails(getProviderUserID(), getProviderPass()).clickCube()
+				.clickpatientMessangerApp().clickRPM().clickCreateRPM().createRpmProgram(rpmName)
+				.verifyRpmProgram(rpmName);
 
 	}
 

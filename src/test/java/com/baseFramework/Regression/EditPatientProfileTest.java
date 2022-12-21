@@ -1,3 +1,4 @@
+
 package com.baseFramework.Regression;
 
 import org.openqa.selenium.By;
@@ -15,7 +16,7 @@ import com.baseFramework.PageObject.PatientPortalLoginPage;
 
 		@BeforeClass
 		public void setUp() {
-			appLibrary = new AppLibrary("FileUploadTest");
+			appLibrary = new AppLibrary("EditPatientProfileTest");
 			
 		}
 
@@ -24,12 +25,9 @@ import com.baseFramework.PageObject.PatientPortalLoginPage;
 
 			appLibrary.getDriverInstance();
 			appLibrary.launchApp("https://devpatient.docsink.com");// launching the application in browser
-			PatientPortalLoginPage lp = new PatientPortalLoginPage(appLibrary);
-			EditPatientProfile ful = new  EditPatientProfile(appLibrary);
-			lp.fillLoginDetails("harryrider@mailinator.com", "Test@123");
-			Thread.sleep(2000);
-			ful.clickProfile();
-			ful.profile();
+			new PatientPortalLoginPage(appLibrary).fillLoginDetails(getPatientUserID(), getPatientPass())
+			.clickSetting().accountDetails().editProfileVerify();
+		
 		}
 			
 

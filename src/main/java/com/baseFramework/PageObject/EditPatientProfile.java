@@ -14,7 +14,6 @@ public class EditPatientProfile {
 
 	AppLibrary appLibrary;
 
-	public String profile = "xpath:-://span[text()='Settings']";
 	public String preferredName = "xpath:-://input[@id='preferred_name']";
 	public String phoneNumber = "xpath:-://input[@id='phone_number']";
 	public String editIcon = "xpath:-://input[@type='file']";
@@ -26,11 +25,7 @@ public class EditPatientProfile {
 		this.appLibrary = appLibrary;
 	}
 
-	public void clickProfile() throws Exception {
-		appLibrary.clickElement(profile);
-	}
-
-	public void profile() throws Exception {
+	public EditPatientProfileVerification accountDetails() throws Exception {
 
 		String expectedPreferredName = "Potter";
 		appLibrary.sleep(5000);
@@ -40,7 +35,7 @@ public class EditPatientProfile {
 		appLibrary.enterText(address, "88 street road");
 		appLibrary.clickElement(saveChangesButton);
 		appLibrary.waitForPageToLoad();
-		String actualPreferredName = appLibrary.findElement(preferredName).getAttribute("value").toString();
-		Assert.assertEquals(actualPreferredName, expectedPreferredName);
+		
+		return new EditPatientProfileVerification(appLibrary);
 	}
 }

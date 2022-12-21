@@ -31,25 +31,9 @@ public class PatientCreationTest extends TestBase {
 		String lname = "joa" + appLibrary.getFormattedDate();
 
 		ProviderPortalLoginPage lp = new ProviderPortalLoginPage(appLibrary);
-		lp.fillLoginDetails("dseals+admin@docsink.com", "Beer2nite!").
-		clickChat()
-		.clickPatients().dismissAlert().clickAddNewPatients().fillDetails(fname, lname, fname + "@mailinator.com").emailVerification(fname + "@mailinator.com").patientCreationVerification();;
-		
-		
-		
-//		
-//		ProviderPortalDashBoardPage ppdp = new ProviderPortalDashBoardPage(appLibrary);
-//		ppdp.clickChat();
-//		ppdp.clickPatients();
-//		ppdp.dismissAlert();
-//		ppdp.clickAddNewPatients();
-//		PatientCreationFillDetailsPage pcfd = new PatientCreationFillDetailsPage(appLibrary);
-//		pcfd.fillDetails(fname, lname, fname + "@mailinator.com");
-//		
-//		
-//		PatientPortalSignUpPage ppsp = new PatientPortalSignUpPage(appLibrary);
-//		ppsp.emailVerification(fname + "@mailinator.com");
-//		ppsp.patientCreationVerification();
+		lp.fillLoginDetails(getProviderUserID(), getProviderPass()).clickChat().clickPatients().dismissAlert()
+				.clickAddNewPatients().fillDetails(fname, lname, fname + "@mailinator.com")
+				.emailVerification(fname + "@mailinator.com").patientCreationVerification();
 
 	}
 

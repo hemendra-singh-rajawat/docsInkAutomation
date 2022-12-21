@@ -14,36 +14,18 @@ public class ARCSAssessmentCreationTest extends TestBase {
 
 	@BeforeClass
 	public void setUp() {
-		appLibrary = new AppLibrary("ARCSAssessmentCreation");
+		appLibrary = new AppLibrary("ARCSAssessmentCreationTest");
 	}
 
 	@Test
 	public void ARCSAssessmentCreation() throws Throwable {
-		String assessmentName = "TestArcsAuto7";
+		String assessmentName = "TestArcsAuto" + appLibrary.getFormattedDate();
 
 		appLibrary.getDriverInstance();
-		appLibrary.launchApp("https://dev.docsink.com");// launching the application in browser
-		ProviderPortalLoginPage pplp = new ProviderPortalLoginPage(appLibrary);
-		pplp.fillLoginDetails("dseals+admin@docsink.com", "Beer2nite!")
-		.clickCube()
-		.clickpatientMessangerApp()
-		.clickARCS()
-		.clickCreateARCS()
-		.createARCSAssessment(assessmentName)
-		.verifyCreateMyAssessment(assessmentName);
-		
-		
-		
-		//appLibrary.sleep(5000);
-		//ProviderPortalTeamBuilderPage pptp = new ProviderPortalTeamBuilderPage(appLibrary);
-//		pptp.clickCube();
-		//pptp.clickpatientMessangerApp();
-		
-//		ARCSAssessmentCreationPage aacp = new ARCSAssessmentCreationPage(appLibrary);
-//		aacp.clickARCS();
-//		aacp.clickCreateARCS();
-//		aacp.createARCSAssessment(assessmentName).verifyCreateMyAssessment(assessmentName);
-//		//appLibrary.verification(assessmentlocator,assessmentName);
+		appLibrary.launchApp();// launching the application in browser
+		new ProviderPortalLoginPage(appLibrary).fillLoginDetails(getProviderUserID(), getProviderPass()).clickCube()
+				.clickpatientMessangerApp().clickARCS().clickCreateARCS().createARCSAssessment(assessmentName)
+				.verifyCreateMyAssessment(assessmentName);
 
 	}
 

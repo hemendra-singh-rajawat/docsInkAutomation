@@ -71,29 +71,25 @@ public class TestBase {
 
 	public String getProviderUserID() {
 		String email = null;
-
-		if (appLibrary.baseUrl.contains("test")) {
-			email = loadUserProperties().getProperty("PROVIDER_USER_STAGE");
-		} else if (appLibrary.baseUrl.contains("preprod")) {
-			System.out.println("Properties: " + loadUserProperties());
-			email = loadUserProperties().getProperty("PROVIDER_USER_PREPROD");
-		} else if (appLibrary.baseUrl.contains("dev") || appLibrary.baseUrl.contains("uat")) {
-			email = loadUserProperties().getProperty("PROVIDER_USER_DEV");
-		}
+		email = loadUserProperties().getProperty("PROVIDER_USER");
 		return email;
 	}
-
-	public String getProviderPassword() {
+	
+	public String getProviderPass() {
 		String pass = null;
+		pass = loadUserProperties().getProperty("PROVIDER_PASS");
+		return pass;
+	}
 
-		System.out.println("URL: " + appLibrary.baseUrl);
-		if (appLibrary.baseUrl.contains("test")) {
-			pass = loadUserProperties().getProperty("PROVIDER_PASS_STAGE");
-		} else if (appLibrary.baseUrl.contains("preprod")) {
-			pass = loadUserProperties().getProperty("PROVIDER_PASS_PREPROD");
-		} else if (appLibrary.baseUrl.contains("dev") || appLibrary.baseUrl.contains("uat")) {
-			pass = loadUserProperties().getProperty("PROVIDER_PASS_DEV");
-		}
+	public String getPatientUserID() {
+		String email = null;
+		email = loadUserProperties().getProperty("PATIENT_USER");
+		return email;
+	}
+	
+	public String getPatientPass() {
+		String pass = null;
+		pass = loadUserProperties().getProperty("PATIENT_PASS");
 		return pass;
 	}
 
@@ -130,14 +126,14 @@ public class TestBase {
 						+ appLibrary.getCurrentSessionID() + ".json");
 			}
 		}
-		
+
 		try {
 			Alert alert = appLibrary.getCurrentDriverInstance().switchTo().alert();
 			String alertText = alert.getText();
 			alert.accept();
 			AppLibrary.autoLogger("Unexpected Alert opened: " + alertText);
 		} catch (NoAlertPresentException e) {
-			//Alert was not present
+			// Alert was not present
 		}
 
 		try {
@@ -155,7 +151,7 @@ public class TestBase {
 			}
 			throw e;
 		}
-		
+
 		appLibrary.closeBrowser();
 	}
 
