@@ -35,7 +35,7 @@ public class PatientCreationFillDetailsPage {
 	    appLibrary.verifyElement(okButton, true, 0);
 	}
 	
-public void fillDetails(String fname,String lname,String emailId ) throws Exception {
+public PatientPortalSignUpPage fillDetails(String fname,String lname,String emailId ) throws Exception {
  
 	appLibrary.enterText(firstName, fname);
 	appLibrary.enterText(lastName, lname);
@@ -45,7 +45,8 @@ public void fillDetails(String fname,String lname,String emailId ) throws Except
 	appLibrary.clickElement(selectDropDown);
 	appLibrary.clickElement(selectEmail);
 	appLibrary.clickElement(saveButton);
-	appLibrary.clickElement(okButton);	
+	appLibrary.clickElement(okButton);
+	return new PatientPortalSignUpPage(appLibrary);
 }
 	}
 

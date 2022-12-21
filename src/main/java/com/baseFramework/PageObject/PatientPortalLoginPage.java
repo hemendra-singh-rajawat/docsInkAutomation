@@ -4,7 +4,7 @@ import org.testng.Assert;
 
 import com.baseFramework.Lib.AppLibrary;
 
-public class LoginPage {
+public class PatientPortalLoginPage {
 
 	AppLibrary appLibrary;
 	public String emailInput = "xpath:-://input[@placeholder='Enter your email']";
@@ -19,9 +19,8 @@ public class LoginPage {
 	public String logInButtonGreen = "xpath:-://button[contains(@class,'submit-btn')]";
 	public String invalidCred = "xpath:-://span[@class='text-danger fs-5']";
 	public String greet = "xpath:-://h3[text()='Hey, good to see you again!']";
-	
 
-	public LoginPage(AppLibrary appLibrary) {
+	public PatientPortalLoginPage(AppLibrary appLibrary) {
 		this.appLibrary = appLibrary;
 	}
 
@@ -38,26 +37,12 @@ public class LoginPage {
 
 	}
 
-	public void fillLoginDetails(String email, String pass) throws Exception {
+	public PatientPortalDashBoard fillLoginDetails(String email, String pass) throws Exception {
 		appLibrary.enterText(emailInput, email);
 		appLibrary.enterText(passwordInput, pass);
 		appLibrary.clickElement(logInButtonGreen);
-//		String a = appLibrary.findElement(pass).getText();
-//		System.out.println(a);
-//	Assert.assertEquals(a, "Michel Stark", "Text not matched");
+		return new PatientPortalDashBoard(appLibrary);
 
 	}
 
-	public String invalidcredential() {
-
-		String a = appLibrary.findElement(invalidCred).getText();
-		
-		return a;
-		
-	}
-	
-	public void greeting(String locator) {
-		String a = appLibrary.findElement(locator).getText();
-	
-	}
 }

@@ -28,10 +28,11 @@ public class ProviderPortalLoginPage {
 
 	}
 	
-	public void fillLoginDetails(String email, String pass) throws Exception {
+	public ProviderPortalTeamBuilderPage fillLoginDetails(String email, String pass) throws Exception {
 		appLibrary.enterText(emailInput, email);
 		appLibrary.enterText(passwordInput, pass);
 		appLibrary.clickElement(signInButton);
+		return new ProviderPortalTeamBuilderPage(appLibrary);
 
 	}
 	

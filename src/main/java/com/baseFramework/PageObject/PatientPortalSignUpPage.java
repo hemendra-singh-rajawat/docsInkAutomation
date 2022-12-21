@@ -40,7 +40,7 @@ public class PatientPortalSignUpPage {
 		appLibrary.verifyElement(emailVerification, true, 0);
 	}
 	
-public void emailVerification(String email) throws Exception {
+public PatientPortalSignUpPage emailVerification(String email) throws Exception {
 	appLibrary.launchApp("https://www.mailinator.com");
 	appLibrary.enterText(searchBox, email);
 	appLibrary.clickElement(goButton);
@@ -53,6 +53,7 @@ public void emailVerification(String email) throws Exception {
     appLibrary.enterText(confirmPassword, "Test@123");
     appLibrary.clickElement(checkBox);
     appLibrary.clickElement(registerButton);
+    return new PatientPortalSignUpPage(appLibrary);
 }
 	
 	public void patientCreationVerification() throws Exception {

@@ -7,7 +7,6 @@ import com.baseFramework.Lib.AppLibrary;
 public class ProviderPortalDashBoardPage {
 
 	AppLibrary appLibrary;
-	public String chat = "xpath:-://i[@class='fal fa-comments']";
 	public String patients = "xpath:-://i[@class='fal fa-id-card']";
 	public String addNewPatients = "xpath:-://a[@id='add-new-patient']";
 	public String appAlert = "xpath:-://i[@class='fa fa-times']";
@@ -20,32 +19,29 @@ public class ProviderPortalDashBoardPage {
 
 	
 	
-	public void verifyProviderPortalDashBoardPageUi() throws Exception {
-		
-		appLibrary.verifyElement(chat, true, 0);
-		appLibrary.verifyElement(patients , true, 0);
-		appLibrary.verifyElement(addNewPatients, true, 0);
-	   
-
-	}
+//	public void verifyProviderPortalDashBoardPageUi() throws Exception {
+//		
+//		appLibrary.verifyElement(chat, true, 0);
+//		appLibrary.verifyElement(patients , true, 0);
+//		appLibrary.verifyElement(addNewPatients, true, 0);
+//	   
+//
+//	}
 	
 	
-	
-	
-	public void clickChat() throws Exception {
-		appLibrary.clickElement(chat);
-	}
-	
-public void clickPatients() throws Exception {
+public ProviderPortalDashBoardPage clickPatients() throws Exception {
 	appLibrary.clickElement(patients);
+	return new ProviderPortalDashBoardPage(appLibrary);
 }
-public void dismissAlert() throws Exception {
+public ProviderPortalDashBoardPage dismissAlert() throws Exception {
 	appLibrary.clickElement(appAlert);
+	return new ProviderPortalDashBoardPage(appLibrary);
 }
 	
-public void clickAddNewPatients() throws Exception {
+public PatientCreationFillDetailsPage clickAddNewPatients() throws Exception {
 	appLibrary.sleep(3000);
 	appLibrary.clickElement(addNewPatients);
+	return new PatientCreationFillDetailsPage(appLibrary);
 }
 
 

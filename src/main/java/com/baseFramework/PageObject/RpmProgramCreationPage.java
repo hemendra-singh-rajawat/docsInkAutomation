@@ -34,7 +34,7 @@ public class RpmProgramCreationPage {
 	public String saveButton = "xpath:-://div[button[text()='Close']]/button[text()='Save']";
 	public String saveButton1 = "xpath:-://div[div[@id='rpm-view']]//button[text()='Save']";
 	public String rpmAssessmentName = "xpath:-://table[1]/tbody/tr[1]/td[1]";
-	
+
 	public RpmProgramCreationPage(AppLibrary appLibrary) {
 		this.appLibrary = appLibrary;
 	}
@@ -48,14 +48,18 @@ public class RpmProgramCreationPage {
 		appLibrary.verifyElement(description, true, 0);
 	}
 
-	public void clickRPM() throws Exception {
+	public RpmProgramCreationPage clickRPM() throws Exception {
 		appLibrary.clickElement(RPM);
+		return new RpmProgramCreationPage(appLibrary);
 	}
 
-	public void clickCreateRPM() throws Exception {
+	public RpmProgramCreationPage clickCreateRPM() throws Exception {
 		appLibrary.clickElement(createRPM);
+		return new RpmProgramCreationPage(appLibrary);
+
 	}
-	public void createRpmProgram(String rpmName) throws Exception {
+
+	public MyRpmProgramPage createRpmProgram(String rpmName) throws Exception {
 		appLibrary.enterText(title, rpmName);
 		appLibrary.clickElement(Provider);
 		appLibrary.clickElement(selectProvider);
@@ -77,8 +81,7 @@ public class RpmProgramCreationPage {
 		appLibrary.clickElement(saveButton);
 		appLibrary.sleep(3000);
 		appLibrary.clickElement(saveButton1);
-		
-		
+		return new MyRpmProgramPage(appLibrary);
 	}
 
 }

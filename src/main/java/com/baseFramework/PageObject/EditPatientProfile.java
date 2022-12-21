@@ -34,7 +34,6 @@ public class EditPatientProfile {
 
 		String expectedPreferredName = "Potter";
 		appLibrary.sleep(5000);
-		appLibrary.sleep(5000);
 		appLibrary.findElement(preferredName).sendKeys(Keys.CONTROL, "a");
 		appLibrary.findElement(preferredName).sendKeys(Keys.DELETE);
 		appLibrary.enterText(preferredName, "Potter");

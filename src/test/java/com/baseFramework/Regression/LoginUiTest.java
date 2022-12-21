@@ -5,7 +5,7 @@ import org.testng.annotations.Test;
 
 import com.baseFramework.Lib.AppLibrary;
 import com.baseFramework.Lib.TestBase;
-import com.baseFramework.PageObject.LoginPage;
+import com.baseFramework.PageObject.PatientPortalLoginPage;
 
 
 public class LoginUiTest extends TestBase {
@@ -21,7 +21,7 @@ public class LoginUiTest extends TestBase {
 
 		appLibrary.getDriverInstance();
 		appLibrary.launchApp();// launching the application in browser
-		LoginPage lp = new LoginPage(appLibrary);
+		PatientPortalLoginPage lp = new PatientPortalLoginPage(appLibrary);
 		lp.verifyLoginPageUi();
 	}
 

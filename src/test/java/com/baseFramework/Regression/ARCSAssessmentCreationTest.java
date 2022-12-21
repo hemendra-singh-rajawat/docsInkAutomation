@@ -20,21 +20,30 @@ public class ARCSAssessmentCreationTest extends TestBase {
 	@Test
 	public void ARCSAssessmentCreation() throws Throwable {
 		String assessmentName = "TestArcsAuto7";
-		String assessmentlocator = "xpath:-://td[text()='"+assessmentName+"']";
+
 		appLibrary.getDriverInstance();
-		appLibrary.launchApp();// launching the application in browser
+		appLibrary.launchApp("https://dev.docsink.com");// launching the application in browser
 		ProviderPortalLoginPage pplp = new ProviderPortalLoginPage(appLibrary);
-		pplp.fillLoginDetails("dseals+admin@docsink.com", "Beer2nite!");
-		appLibrary.sleep(5000);
-		ProviderPortalTeamBuilderPage pptp = new ProviderPortalTeamBuilderPage(appLibrary);
-		pptp.clickCube();
-		pptp.clickpatientMessangerApp();
+		pplp.fillLoginDetails("dseals+admin@docsink.com", "Beer2nite!")
+		.clickCube()
+		.clickpatientMessangerApp()
+		.clickARCS()
+		.clickCreateARCS()
+		.createARCSAssessment(assessmentName)
+		.verifyCreateMyAssessment(assessmentName);
 		
-		ARCSAssessmentCreationPage aacp = new ARCSAssessmentCreationPage(appLibrary);
-		aacp.clickARCS();
-		aacp.clickCreateARCS();
-		aacp.createARCSAssessment(assessmentName);
-		appLibrary.verification(assessmentlocator,assessmentName);
+		
+		
+		//appLibrary.sleep(5000);
+		//ProviderPortalTeamBuilderPage pptp = new ProviderPortalTeamBuilderPage(appLibrary);
+//		pptp.clickCube();
+		//pptp.clickpatientMessangerApp();
+		
+//		ARCSAssessmentCreationPage aacp = new ARCSAssessmentCreationPage(appLibrary);
+//		aacp.clickARCS();
+//		aacp.clickCreateARCS();
+//		aacp.createARCSAssessment(assessmentName).verifyCreateMyAssessment(assessmentName);
+//		//appLibrary.verification(assessmentlocator,assessmentName);
 
 	}
 
