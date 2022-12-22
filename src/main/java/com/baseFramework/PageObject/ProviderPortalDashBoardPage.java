@@ -18,17 +18,6 @@ public class ProviderPortalDashBoardPage {
 	}
 
 	
-	
-//	public void verifyProviderPortalDashBoardPageUi() throws Exception {
-//		
-//		appLibrary.verifyElement(chat, true, 0);
-//		appLibrary.verifyElement(patients , true, 0);
-//		appLibrary.verifyElement(addNewPatients, true, 0);
-//	   
-//
-//	}
-	
-	
 public ProviderPortalDashBoardPage clickPatients() throws Exception {
 	appLibrary.clickElement(patients);
 	return new ProviderPortalDashBoardPage(appLibrary);

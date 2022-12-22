@@ -6,7 +6,6 @@ public class MyARCSAssessmentPage {
 
 	AppLibrary appLibrary;
 
-	// public String actualAssessmentName = "xpath:-://table[1]/tbody/tr[1]/td[1]";
 	String assessmentlocator = "xpath:-://td[text()='replace']";
 
 	public MyARCSAssessmentPage(AppLibrary appLibrary) {
