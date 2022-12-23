@@ -1,20 +1,15 @@
 package com.baseFramework.Regression;
 
-import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import com.baseFramework.Lib.AppLibrary;
 import com.baseFramework.Lib.TestBase;
-import com.baseFramework.PageObject.PatientCreation;
-import com.baseFramework.PageObject.PatientCreationFillDetailsPage;
-import com.baseFramework.PageObject.PatientPortalSignUpPage;
-import com.baseFramework.PageObject.ProviderPortalDashBoardPage;
 import com.baseFramework.PageObject.ProviderPortalLoginPage;
 
 public class PatientCreationTest extends TestBase {
 
-	private String emailId;
 
 	@BeforeMethod
 	@BeforeClass

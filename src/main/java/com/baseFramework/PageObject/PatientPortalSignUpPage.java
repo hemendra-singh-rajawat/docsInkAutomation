@@ -1,7 +1,5 @@
 package com.baseFramework.PageObject;
 
-import org.testng.Assert;
-
 import com.baseFramework.Lib.AppLibrary;
 
 public class PatientPortalSignUpPage {
@@ -57,7 +55,7 @@ public PatientPortalSignUpPage emailVerification(String email) throws Exception 
 }
 	
 	public void patientCreationVerification() throws Exception {
-		appLibrary.sleep(3000);
+		appLibrary.waitTillElementLoaded(setting);
 		appLibrary.clickElementWithJs(setting);
 		appLibrary.verifyElement(emailVerification, true, 200);
 	}

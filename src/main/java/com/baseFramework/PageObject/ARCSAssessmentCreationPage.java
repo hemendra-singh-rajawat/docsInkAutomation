@@ -1,8 +1,5 @@
 package com.baseFramework.PageObject;
 
-import org.openqa.selenium.support.ui.Sleeper;
-import org.testng.Assert;
-
 import com.baseFramework.Lib.AppLibrary;
 
 public class ARCSAssessmentCreationPage {
@@ -71,7 +68,7 @@ public class ARCSAssessmentCreationPage {
 		appLibrary.clickElement(okButten);
 		appLibrary.clickElement(nextbutton);
 		appLibrary.clickElement(nextbutton);
-		appLibrary.sleep(3000);
+		appLibrary.waitTillElementLoaded(okButten);
 		appLibrary.clickElement(okButten);
 		appLibrary.clickElement(browserTest);
 		appLibrary.clickElement(finishButton);

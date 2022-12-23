@@ -1,12 +1,5 @@
 package com.baseFramework.PageObject;
 
-import java.util.List;
-
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.Select;
-import org.openqa.selenium.support.ui.Sleeper;
-import org.testng.Assert;
-
 import com.baseFramework.Lib.AppLibrary;
 
 public class PatientMessengerPage {

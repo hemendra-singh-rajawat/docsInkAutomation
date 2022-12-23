@@ -1,12 +1,10 @@
 package com.baseFramework.Regression;
 
-import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 import com.baseFramework.Lib.AppLibrary;
 import com.baseFramework.Lib.TestBase;
-import com.baseFramework.PageObject.PatientPortalDashBoard;
 import com.baseFramework.PageObject.PatientPortalLoginPage;
 
 public class PatientPortalLoginFuctionalityTest extends TestBase {

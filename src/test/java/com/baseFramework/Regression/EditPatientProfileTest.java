@@ -1,14 +1,11 @@
 
 package com.baseFramework.Regression;
 
-import org.openqa.selenium.By;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 import com.baseFramework.Lib.AppLibrary;
 import com.baseFramework.Lib.TestBase;
-
-import com.baseFramework.PageObject.EditPatientProfile;
 import com.baseFramework.PageObject.PatientPortalLoginPage;
 
 

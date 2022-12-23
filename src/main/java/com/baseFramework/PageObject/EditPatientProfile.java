@@ -1,12 +1,6 @@
 package com.baseFramework.PageObject;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.By.ByXPath;
 import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.testng.Assert;
 
 import com.baseFramework.Lib.AppLibrary;
 
@@ -27,8 +21,6 @@ public class EditPatientProfile {
 
 	public EditPatientProfileVerification accountDetails() throws Exception {
 
-		String expectedPreferredName = "Potter";
-		appLibrary.sleep(5000);
 		appLibrary.findElement(preferredName).sendKeys(Keys.CONTROL, "a");
 		appLibrary.findElement(preferredName).sendKeys(Keys.DELETE);
 		appLibrary.enterText(preferredName, "Potter");

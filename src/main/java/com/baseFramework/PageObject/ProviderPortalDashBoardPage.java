@@ -1,7 +1,5 @@
 package com.baseFramework.PageObject;
 
-import org.testng.Assert;
-
 import com.baseFramework.Lib.AppLibrary;
 
 public class ProviderPortalDashBoardPage {
@@ -28,7 +26,7 @@ public ProviderPortalDashBoardPage dismissAlert() throws Exception {
 }
 	
 public PatientCreationFillDetailsPage clickAddNewPatients() throws Exception {
-	appLibrary.sleep(3000);
+	appLibrary.waitTillElementLoaded(addNewPatients);
 	appLibrary.clickElement(addNewPatients);
 	return new PatientCreationFillDetailsPage(appLibrary);
 }

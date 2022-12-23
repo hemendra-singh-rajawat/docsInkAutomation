@@ -1,21 +1,14 @@
 package com.baseFramework.PageObject;
 
-import java.util.List;
-
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.Select;
-import org.openqa.selenium.support.ui.Sleeper;
-import org.testng.Assert;
-
 import com.baseFramework.Lib.AppLibrary;
 
 public class RpmProgramCreationPage {
 
 	AppLibrary appLibrary;
-	public String RPM = "xpath:-://span[text()='Remote Patient Monitoring Program']";
+	public String rpm = "xpath:-://span[text()='Remote Patient Monitoring Program']";
 	public String createRPM = "xpath:-://span[normalize-space()='Create RPM Program']";
 	public String title = "xpath:-://input[@id='rpm_title']";
-	public String Provider = "xpath:-: //span[@id='select2-rpm_user-container']";
+	public String provider = "xpath:-: //span[@id='select2-rpm_user-container']";
 	public String selectProvider = "xpath:-: //li[text()='Ashley Williams']";
 	public String description = "xpath:-://textarea[@placeholder='Description']";
 	public String conditions = "xpath:-://input[@placeholder='Search to find an ICD 10 Diagnosis code']";
@@ -32,7 +25,7 @@ public class RpmProgramCreationPage {
 	public String addDevice = "xpath:-://a[@id='add-device-btn']";
 	public String selectAll = "xpath:-://label[@for='ckbCheckAll']";
 	public String saveButton = "xpath:-://div[button[text()='Close']]/button[text()='Save']";
-	public String saveButton1 = "xpath:-://div[div[@id='rpm-view']]//button[text()='Save']";
+	public String rpmProgramPageSaveButton = "xpath:-://div[div[@id='rpm-view']]//button[text()='Save']";
 	public String rpmAssessmentName = "xpath:-://table[1]/tbody/tr[1]/td[1]";
 
 	public RpmProgramCreationPage(AppLibrary appLibrary) {
@@ -40,16 +33,16 @@ public class RpmProgramCreationPage {
 	}
 
 	public void verifyLoginPageUi() throws Exception {
-		appLibrary.verifyElement(RPM, true, 0);
+		appLibrary.verifyElement(rpm, true, 0);
 		appLibrary.verifyElement(createRPM, true, 0);
 		appLibrary.verifyElement(title, true, 0);
-		appLibrary.verifyElement(Provider, true, 0);
+		appLibrary.verifyElement(provider, true, 0);
 		appLibrary.verifyElement(selectProvider, true, 0);
 		appLibrary.verifyElement(description, true, 0);
 	}
 
 	public RpmProgramCreationPage clickRPM() throws Exception {
-		appLibrary.clickElement(RPM);
+		appLibrary.clickElement(rpm);
 		return new RpmProgramCreationPage(appLibrary);
 	}
 
@@ -61,7 +54,7 @@ public class RpmProgramCreationPage {
 
 	public MyRpmProgramPage createRpmProgram(String rpmName) throws Exception {
 		appLibrary.enterText(title, rpmName);
-		appLibrary.clickElement(Provider);
+		appLibrary.clickElement(provider);
 		appLibrary.clickElement(selectProvider);
 		appLibrary.enterText(conditions, "Kid");
 		appLibrary.clickElement(conditionSelect);
@@ -77,10 +70,10 @@ public class RpmProgramCreationPage {
 		appLibrary.enterText(lowValue, "90");
 		appLibrary.clickElement(addDevice);
 		appLibrary.clickElement(selectAll);
-		appLibrary.sleep(3000);
+		appLibrary.waitTillElementClickable(saveButton);
 		appLibrary.clickElement(saveButton);
-		appLibrary.sleep(3000);
-		appLibrary.clickElement(saveButton1);
+		appLibrary.waitTillElementLoaded(rpmProgramPageSaveButton);
+		appLibrary.clickElement(rpmProgramPageSaveButton);
 		return new MyRpmProgramPage(appLibrary);
 	}
 

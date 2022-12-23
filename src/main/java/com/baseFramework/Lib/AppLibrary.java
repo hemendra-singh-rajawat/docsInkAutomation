@@ -32,10 +32,12 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.LocalFileDetector;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.safari.SafariDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Reporter;
 
+import dev.failsafe.Timeout;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import junit.framework.Assert;
 import jxl.Cell;
@@ -45,7 +47,7 @@ import jxl.read.biff.BiffException;
 
 public class AppLibrary {
 
-	public final long GLOBALTIMEOUT = 75;
+	public final long GLOBALTIMEOUT = 90;
 	private static WebDriver driver;
 	private static Configuration config;
 	public String baseUrl;
@@ -214,7 +216,7 @@ public class AppLibrary {
 		String string = locator;
 		System.out.println(string);
 		String[] parts = string.split(":-:");
-		String type ="xpath"; // 004
+		String type = "xpath"; // 004
 		String object = parts[1];
 
 		if (type.equals("id")) {
@@ -448,15 +450,6 @@ public class AppLibrary {
 		}
 	}
 
-	public static void staticmmmm(String url) {
-		int counter = 10;
-		for (; counter > 0; counter--) {
-			if (driver.getCurrentUrl().contains(url)) {
-				break;
-			}
-		}
-	}
-
 	public void switchToWindow(int windowNo) {
 		Set<String> set = driver.getWindowHandles();
 		String windowHandle = null;
@@ -485,7 +478,6 @@ public class AppLibrary {
 	}
 
 	public boolean waitTillElementLoaded(String locator) {
-		// driver.manage().timeouts().implicitlyWait(1, TimeUnit.SECONDS);
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(1));
 		int counter = 10;
 		do {
@@ -507,6 +499,30 @@ public class AppLibrary {
 		throw new RuntimeException("element was not loaded:" + locator);
 	}
 
+	public boolean waitTillElementClickable(String locator) {
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(1));
+		int counter = 10;
+		do {
+			try {
+				if (findElement(locator) != null) {
+					WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+					wait.until(ExpectedConditions.elementToBeClickable(findElement(locator)));		
+					return true;
+					}else {
+						sleep(1000);
+						counter--;
+				}
+			}
+		catch (Exception e) {
+				sleep(3000);
+				counter--;
+				continue;
+			}
+		} while (counter > 0);
+		// driver.manage().timeouts().implicitlyWait(GLOBALTIMEOUT, TimeUnit.SECONDS);
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(GLOBALTIMEOUT));
+		throw new RuntimeException("element was not loaded:" + locator);
+	}
 	public static void autoLogger(String message) {
 		Reporter.log(message, true);
 	}
@@ -731,14 +747,13 @@ public class AppLibrary {
 
 	}
 
-	public void selectOption(String xpath,int index) {
+	public void selectOption(String xpath, int index) {
 		WebElement element = driver.findElement(By.xpath(xpath));
-		Select objSelect =new Select(element);
+		Select objSelect = new Select(element);
 		objSelect.selectByIndex(index);
 	}
 
-
-	public void verification(String locator,String expectedString) {
+	public void verification(String locator, String expectedString) {
 		String actualString = findElement(locator).getText();
 		Assert.assertEquals(actualString, expectedString);
 	}
