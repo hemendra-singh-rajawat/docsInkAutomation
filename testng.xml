@@ -1,8 +1,12 @@
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
 <suite name="test">
-	<test name="login" parallel="methods" thread-count="5">
+	<test name="docsinkSuite" parallel="methods" thread-count="2">
 		<classes>
-		<class name="com.baseFramework.Regression.LoginFuctionalityTest"/>
+		<class name="com.baseFramework.Regression.ARCSAssessmentCreationTest"/>
+		<class name="com.baseFramework.Regression.EditPatientProfileTest"/>
+		<class name="com.baseFramework.Regression.PatientCreationTest"/>
+		<class name="com.baseFramework.Regression.PatientPortalLoginFuctionalityTest"/>
+		<class name="com.baseFramework.Regression.RpmProgramCreationTest"/>
 		</classes>
 	</test>
 </suite>

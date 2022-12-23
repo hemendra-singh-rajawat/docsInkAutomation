@@ -47,7 +47,7 @@ import jxl.read.biff.BiffException;
 
 public class AppLibrary {
 
-	public final long GLOBALTIMEOUT = 90;
+	public final long GLOBALTIMEOUT = 75;
 	private static WebDriver driver;
 	private static Configuration config;
 	public String baseUrl;
